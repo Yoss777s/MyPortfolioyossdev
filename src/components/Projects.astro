@@ -1,0 +1,159 @@
+---
+import LinkButton from '../components/LinkButton.astro'
+import ReactJS from './icons/ReactJS.astro'
+import JavaScript from './icons/JavaScript.astro'
+import HTML from './icons/HTML.astro'
+import CSS from './icons/CSS.astro'
+import ChakraUI from './icons/ChakraUI.astro'
+import NodeJS from './icons/NodeJS.astro'
+import Tailwind from './icons/Tailwind.astro'
+import Astroapp from './icons/Astroapp.astro'
+import Expressjs from './icons/Expressjs.astro'
+import Mongodb from './icons/Mongodb.astro'
+import GitHub from './icons/GitHub.astro'
+
+const TAGS = {
+    REACT: {
+        name: "React.js",
+        class: "bg-[#003159] text-white",
+        icon: ReactJS,
+    },
+
+    JAVASCRIPT: {
+        name: "JavaScript",
+        class: "bg-[#003159] text-white",
+        icon: JavaScript, 
+    },
+
+    Html: {
+        name: "HTML5",
+        class: "bg-[#003159] text-white",
+        icon: HTML, 
+    },
+
+    CSS: {
+        name: "CSS",
+        class: "bg-[#003159] text-white",
+        icon: CSS,
+    },
+
+    ChakraUI: {
+        name: "ChakraUI",
+        class: "bg-[#003159] text-white",
+        icon: ChakraUI, 
+    },
+
+    NodeJS: {
+        name: "Node.js",
+        class: "bg-[#003159] text-white",
+        icon: NodeJS,
+    },
+
+    ExpressJS: {
+        name: "Express.js",
+        class: "bg-[#003159] text-white",
+        icon: Expressjs,
+    },
+
+    MongoDB: {
+        name: "MongoDB",
+        class: "bg-[#003159] text-white",
+        icon: Mongodb,
+    },
+
+    TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+
+  ASTRO: {
+    name: "Astro",
+    class: "bg-[#003159] text-white",
+    icon: Astroapp,
+  },
+
+}
+const PROJECTS = [
+    {
+        title: "PROtalento/ADA School - Lista de tareas",
+        description: "Construcción de una Aplicación de Lista de Tareas con React: Desarrollo de una aplicación altamente funcional y estéticamente atractiva utilizando React, HTML, CSS y Chakra UI, para crear una experiencia de usuario fluida y eficaz en la gestión de tareas diarias.",
+        github: "https://github.com/Yoss777s/my-react-task-list-",
+        image: "/projects/taskList.png",
+        tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.Html, TAGS.CSS, TAGS.ChakraUI]
+    },
+
+    {
+        title: "PROtalento/ADA School - Lista de Contactos",
+        description: 'Este código crea una lista de contactos con datos predefinidos, y define tres funciones para agregar, borrar e imprimir contactos. La función "agregarContacto" toma dos argumentos el nombre, apellido y los concatena.',
+        github: "https://github.com/Yoss777s/contact-list/tree/review-1",
+        image: "/projects/contacList.jpg",
+        tags: [TAGS.JAVASCRIPT, TAGS.NodeJS ]
+    },
+
+    {
+        title: "PROtalento/ADA School - Backend para un Aplicación de Gestión de Tareas ",
+        description: "Desarrollo del Backend para una Aplicación de Gestión de Tareas con MongoDB: Implementación de un robusto sistema de gestión de tareas utilizando JavaScript, Node.js, Express.js y MongoDB como base de datos NoSQL, ofreciendo una solución eficiente y escalable para la persistencia de datos en la aplicación.",
+        github: "https://github.com/Yoss777s/-MongoDB-tasklist",
+        image: "/projects/BackendTask.jpg",
+        tags: [TAGS.JAVASCRIPT, TAGS.NodeJS, TAGS.ExpressJS, TAGS.MongoDB ]
+    },
+
+    {
+        title: "Proyecto Personal - Portafolio Web",
+        description: "Portafolio web creado con Astro, JavaScript y Tailwind CSS. Un reflejo de mi pasión por el desarrollo web, donde la innovación y el diseño se fusionan para destacar mi trabajo como desarrolladora web.",
+        github: "#",
+        image: "/projects/PortfolioYoss.png",
+        tags: [TAGS.JAVASCRIPT, TAGS.TAILWIND, TAGS.ASTRO,]
+    }
+]
+---
+
+
+<div class="flex flex-col gap-y-16">
+    {
+      PROJECTS.map(({ image, title, description, tags, github }) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+    <div class="w-full md:w-1/2">
+      <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+        <img alt="Captura de pantalla del proyecto" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+      </div>
+    </div>
+  
+    <div class="w-full md:w-1/2 md:max-w-lg">
+      <h3 class="text-2xl font-bold text-white-800 dark:text-white-100">
+        {title}
+      </h3>
+      <div class="flex flex-wrap mt-2">
+        <ul class="flex flex-row mb-2 gap-x-2">
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                >
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+  
+        <div class="mt-2 text-white-700 dark:text-white-400">{description}</div>
+        <footer class="flex items-end justify-start mt-4 gap-x-4">
+            {github && (
+              <LinkButton href={github}>
+                <GitHub class="size-6" />
+                Code
+                
+              </LinkButton>
+            )}
+            
+          </footer>
+      </div>
+    </div>
+  </article>
+      ))
+    }
+  </div>
+              
+
